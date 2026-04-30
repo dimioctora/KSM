@@ -800,13 +800,14 @@ ul {
     padding: 4rem 0;
     background: var(--bg-white);
     border-top: 1px solid rgba(0,0,0,0.05);
+    overflow: hidden; /* Hide the overflow for the slider */
 }
 
 .partners-title {
     text-align: center;
     font-weight: 600;
     color: var(--text-muted);
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.85rem;
@@ -814,16 +815,17 @@ ul {
 
 .partners-track {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
+    gap: 5rem; /* Increased gap for better spacing in slider */
+    width: max-content; /* Ensure track spans full width of items */
+    animation: scroll 30s linear infinite;
     opacity: 0.6;
     filter: grayscale(100%);
     transition: var(--transition);
 }
 
-.partners-track:hover {
+.partners:hover .partners-track {
+    animation-play-state: paused;
     opacity: 1;
     filter: grayscale(0%);
 }
@@ -831,8 +833,18 @@ ul {
 .partner-logo {
     font-family: var(--font-heading);
     font-weight: 800;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     color: var(--secondary);
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-50% - 2.5rem)); /* Move by half the track width plus half the gap */
+    }
 }
 
 /* =========================================

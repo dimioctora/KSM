@@ -292,7 +292,13 @@
         <div class="container">
             <p class="partners-title">Dipercaya oleh institusi terkemuka</p>
             <div class="partners-track">
-                <!-- Using text placeholders styled as logos for demo -->
+                <!-- Set 1 -->
+                <div class="partner-logo">Bank Syariah A</div>
+                <div class="partner-logo">BPRS Sejahtera</div>
+                <div class="partner-logo">Koperasi Syariah</div>
+                <div class="partner-logo">Grup Properti X</div>
+                <div class="partner-logo">Investama Global</div>
+                <!-- Set 2 (Duplicated for seamless loop) -->
                 <div class="partner-logo">Bank Syariah A</div>
                 <div class="partner-logo">BPRS Sejahtera</div>
                 <div class="partner-logo">Koperasi Syariah</div>
@@ -358,7 +364,7 @@
                     <h4>Hubungi Kami</h4>
                     <div class="contact-item">
                         <i class="ph-fill ph-map-pin"></i>
-                        <p>Gedung Granadi Tower Lt. 5<br>Jl. HR. Rasuna Said Kav. X-1 No. 8-9<br>Jakarta Selatan 12950
+                        <p>Gedung Granadi Tower Lt. 5<br>Jl. HR. Rasuna Said Kav. X-1<br>Jakarta Selatan 12950
                         </p>
                     </div>
                     <div class="contact-item">
