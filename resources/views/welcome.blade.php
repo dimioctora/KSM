@@ -14,11 +14,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&family=Montserrat:wght@600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Three.js -->
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
@@ -40,29 +43,47 @@
                 <li><a href="#portofolio">Portofolio</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="#kontak" class="btn btn-primary">Konsultasi Gratis</a>
+                <a href="#kontak" class="btn btn-primary magnetic">Konsultasi Gratis</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-nav-links">
+            <a href="#beranda">Beranda</a>
+            <a href="#layanan">Layanan</a>
+            <a href="#tentang">Tentang Kami</a>
+            <a href="#portofolio">Portofolio</a>
+            <a href="#kontak" class="btn btn-primary" style="margin-top:1rem">Konsultasi Gratis</a>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero" id="beranda">
         <div class="hero-background"></div>
+        <canvas id="particles-canvas"></canvas>
+        <canvas id="hero-3d"></canvas>
         <div class="container hero-container">
             <div class="hero-content">
-                <div class="trust-badges">
-                    <span class="badge"><i class="ph-fill ph-seal-check"></i> Syariah</span>
+                <div class="trust-badges reveal">
                     <span class="badge"><i class="ph-fill ph-shield-check"></i> Profesional</span>
                     <span class="badge"><i class="ph-fill ph-eye"></i> Transparan</span>
                     <span class="badge"><i class="ph-fill ph-handshake"></i> Amanah</span>
                 </div>
-                <h1>Solusi Pengelolaan Aset & Pembiayaan Syariah <span>Tanpa Masalah</span></h1>
-                <p>Kami menghadirkan layanan profesional berlandaskan prinsip syariah untuk memastikan aset Anda
-                    dikelola dengan aman, transparan, dan memberikan nilai tambah yang berkelanjutan.</p>
-                <div class="hero-buttons">
-                    <a href="#kontak" class="btn btn-primary btn-large">Konsultasi Sekarang <i
+                <h1 class="reveal">Solusi Pengelolaan Aset & Pembiayaan Syariah <span>Tanpa Masalah</span></h1>
+                <p class="hero-description reveal" id="typed-text"
+                    data-text="Kami menghadirkan layanan profesional berlandaskan prinsip syariah untuk memastikan aset Anda dikelola dengan aman, transparan, dan memberikan nilai tambah yang berkelanjutan.">
+                    Kami menghadirkan layanan profesional berlandaskan prinsip syariah untuk memastikan aset Anda
+                    dikelola dengan aman, transparan, dan memberikan nilai tambah yang berkelanjutan.
+                </p>
+                <div class="hero-buttons reveal">
+                    <a href="#kontak" class="btn btn-primary btn-large magnetic">Konsultasi Sekarang <i
                             class="ph-bold ph-arrow-right"></i></a>
-                    <a href="#layanan" class="btn btn-secondary btn-large glass-btn">Pelajari Layanan</a>
+                    <a href="#layanan" class="btn glass-btn btn-large magnetic">Pelajari Layanan</a>
                 </div>
             </div>
         </div>
@@ -71,36 +92,36 @@
     <!-- Trust Stats Bar -->
     <div class="stats-wrapper">
         <div class="container">
-            <div class="stats-bar glass-card">
+            <div class="stats-bar reveal reveal-scale">
                 <div class="stat-item">
                     <div class="stat-icon"><i class="ph-duotone ph-calendar-star"></i></div>
                     <div class="stat-info">
-                        <h3>20+ Tahun</h3>
-                        <p>Pengalaman</p>
+                        <h3><span data-target="20" data-suffix="+">0</span> Years</h3>
+                        <p>Experience</p>
                     </div>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
                     <div class="stat-icon"><i class="ph-duotone ph-check-circle"></i></div>
                     <div class="stat-info">
-                        <h3>100+</h3>
-                        <p>Proyek Sukses</p>
+                        <h3><span data-target="30" data-suffix="+">0</span></h3>
+                        <p>Projects</p>
                     </div>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
                     <div class="stat-icon"><i class="ph-duotone ph-users-three"></i></div>
                     <div class="stat-info">
-                        <h3>500+</h3>
-                        <p>Mitra & Klien</p>
+                        <h3><span data-target="70" data-suffix="+">0</span></h3>
+                        <p>Partners & Clients</p>
                     </div>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
                     <div class="stat-icon"><i class="ph-duotone ph-bank"></i></div>
                     <div class="stat-info">
-                        <h3>50+</h3>
-                        <p>Aset Terkelola</p>
+                        <h3><span data-target="27" data-suffix="+">0</span></h3>
+                        <p>Managed Assets</p>
                     </div>
                 </div>
             </div>
@@ -111,45 +132,45 @@
     <section class="services section-padding" id="layanan">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-subtitle">Layanan Unggulan</span>
-                <h2>Solusi Finansial Komprehensif</h2>
+                <span class="section-subtitle reveal">Our Services</span>
+                <h2 class="reveal">Comprehensive Financial Solutions</h2>
             </div>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon"><i class="ph-duotone ph-buildings"></i></div>
-                    <h3>Sistem Pengelolaan Aset</h3>
+                    <h3>Asset Management System</h3>
                     <p>Optimalisasi nilai aset Anda melalui manajemen yang profesional, transparan, dan sesuai prinsip
                         syariah.</p>
                     <a href="#" class="service-link">Selengkapnya <i class="ph-bold ph-arrow-right"></i></a>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon"><i class="ph-duotone ph-hand-coins"></i></div>
-                    <h3>Sumber Pembiayaan Kredit</h3>
+                    <h3>Financing Source</h3>
                     <p>Fasilitas pembiayaan syariah yang fleksibel untuk mendukung pertumbuhan dan ekspansi bisnis Anda.
                     </p>
                     <a href="#" class="service-link">Selengkapnya <i class="ph-bold ph-arrow-right"></i></a>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon"><i class="ph-duotone ph-chart-line-up"></i></div>
-                    <h3>Kerjasama Keuangan</h3>
+                    <h3>Financial Cooperation</h3>
                     <p>Kemitraan strategis untuk mencapai tujuan finansial dengan skema bagi hasil yang adil
                         (Mudharabah/Musyarakah).</p>
                     <a href="#" class="service-link">Selengkapnya <i class="ph-bold ph-arrow-right"></i></a>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon"><i class="ph-duotone ph-briefcase"></i></div>
-                    <h3>Project Kolaborasi</h3>
+                    <h3>Project Collaboration</h3>
                     <p>Sinergi dalam pengembangan proyek skala besar dengan manajemen risiko yang terukur dan mitigasi
                         presisi.</p>
                     <a href="#" class="service-link">Selengkapnya <i class="ph-bold ph-arrow-right"></i></a>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon"><i class="ph-duotone ph-network"></i></div>
                     <h3>Group Business</h3>
                     <p>Ekosistem bisnis terintegrasi untuk memperkuat rantai pasok dan daya saing di pasar global.</p>
                     <a href="#" class="service-link">Selengkapnya <i class="ph-bold ph-arrow-right"></i></a>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon"><i class="ph-duotone ph-presentation-chart"></i></div>
                     <h3>Strategic Advisory</h3>
                     <p>Layanan konsultasi finansial strategis untuk membantu pengambilan keputusan yang tepat, efisien,
@@ -161,36 +182,36 @@
     </section>
 
     <!-- About Section -->
-    <section class="about section-padding bg-light" id="tentang">
+    <section class="about section-padding" id="tentang">
         <div class="container about-container">
             <div class="about-content">
-                <span class="section-subtitle">Tentang KSM</span>
-                <h2>Kredibilitas & Integritas dalam Setiap Langkah</h2>
-                <p>PT. Kawan Sejati Manunggal lahir dari komitmen untuk menghadirkan solusi finansial yang tidak hanya
+                <span class="section-subtitle reveal">Tentang KSM</span>
+                <h2 class="reveal">Kredibilitas & Integritas dalam Setiap Langkah</h2>
+                <p class="reveal">PT. Kawan Sejati Manunggal lahir dari komitmen untuk menghadirkan solusi finansial yang tidak hanya
                     berorientasi pada keuntungan, tetapi juga keberkahan. Kami memadukan keahlian profesional dengan
                     prinsip-prinsip syariah yang ketat.</p>
-                <p>Dengan tim ahli yang berpengalaman puluhan tahun di industri keuangan dan manajemen aset, kami siap
+                <p class="reveal">Dengan tim ahli yang berpengalaman puluhan tahun di industri keuangan dan manajemen aset, kami siap
                     menjadi mitra strategis yang dapat Anda andalkan untuk pertumbuhan aset jangka panjang.</p>
 
                 <div class="values-list">
-                    <div class="value-item">
+                    <div class="value-item reveal">
                         <i class="ph-fill ph-check-circle"></i>
                         <span><strong>Transparan:</strong> Laporan berkala yang detail dan dapat diakses kapan
                             saja.</span>
                     </div>
-                    <div class="value-item">
+                    <div class="value-item reveal">
                         <i class="ph-fill ph-check-circle"></i>
                         <span><strong>Profesional:</strong> Dikelola oleh pakar tersertifikasi dengan standar industri
                             tinggi.</span>
                     </div>
-                    <div class="value-item">
+                    <div class="value-item reveal">
                         <i class="ph-fill ph-check-circle"></i>
                         <span><strong>Berkelanjutan:</strong> Fokus pada profitabilitas jangka panjang dan dampak
                             positif.</span>
                     </div>
                 </div>
             </div>
-            <div class="about-image">
+            <div class="about-image reveal reveal-right">
                 <div class="image-wrapper">
                     <img src="{{ asset('images/about_team.png') }}" alt="Tim Profesional KSM">
                     <div class="image-decoration"></div>
@@ -203,36 +224,36 @@
     <section class="how-it-works section-padding">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-subtitle">Proses Kerja</span>
-                <h2>Pendekatan Sistematis & Terukur</h2>
+                <span class="section-subtitle reveal">Proses Kerja</span>
+                <h2 class="reveal">Pendekatan Sistematis & Terukur</h2>
             </div>
 
             <div class="process-steps">
-                <div class="step-item">
+                <div class="step-item reveal">
                     <div class="step-icon"><i class="ph-duotone ph-magnifying-glass"></i></div>
                     <div class="step-number">01</div>
                     <h4>Identifikasi Aset</h4>
                 </div>
                 <div class="step-connector"></div>
-                <div class="step-item">
+                <div class="step-item reveal">
                     <div class="step-icon"><i class="ph-duotone ph-calculator"></i></div>
                     <div class="step-number">02</div>
                     <h4>Analisa & Valuasi</h4>
                 </div>
                 <div class="step-connector"></div>
-                <div class="step-item">
+                <div class="step-item reveal">
                     <div class="step-icon"><i class="ph-duotone ph-handshake"></i></div>
                     <div class="step-number">03</div>
                     <h4>Skema Kerjasama</h4>
                 </div>
                 <div class="step-connector"></div>
-                <div class="step-item">
+                <div class="step-item reveal">
                     <div class="step-icon"><i class="ph-duotone ph-rocket-launch"></i></div>
                     <div class="step-number">04</div>
                     <h4>Eksekusi</h4>
                 </div>
                 <div class="step-connector"></div>
-                <div class="step-item">
+                <div class="step-item reveal">
                     <div class="step-icon"><i class="ph-duotone ph-chart-bar"></i></div>
                     <div class="step-number">05</div>
                     <h4>Monitoring</h4>
@@ -242,18 +263,18 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section class="portfolio section-padding bg-light" id="portofolio">
+    <section class="portfolio section-padding" id="portofolio">
         <div class="container">
             <div class="section-header flex-header">
                 <div>
-                    <span class="section-subtitle">Portofolio KSM</span>
-                    <h2>Kisah Sukses Pengelolaan Aset</h2>
+                    <span class="section-subtitle reveal">Portofolio KSM</span>
+                    <h2 class="reveal">Kisah Sukses Pengelolaan Aset</h2>
                 </div>
-                <a href="#" class="btn btn-outline">Lihat Semua Proyek</a>
+                <a href="#" class="btn btn-outline magnetic reveal">Lihat Semua Proyek</a>
             </div>
 
             <div class="portfolio-grid">
-                <div class="portfolio-card">
+                <div class="portfolio-card reveal">
                     <div class="portfolio-image">
                         <img src="{{ asset('images/portfolio_1.png') }}" alt="Gedung Perkantoran">
                         <div class="portfolio-category">Real Estate</div>
@@ -263,7 +284,7 @@
                         <p class="location"><i class="ph-fill ph-map-pin"></i> Sudirman, Jakarta Selatan</p>
                     </div>
                 </div>
-                <div class="portfolio-card">
+                <div class="portfolio-card reveal">
                     <div class="portfolio-image">
                         <img src="{{ asset('images/portfolio_2.png') }}" alt="Kerjasama Pembiayaan">
                         <div class="portfolio-category">Pembiayaan Syariah</div>
@@ -273,7 +294,7 @@
                         <p class="location"><i class="ph-fill ph-map-pin"></i> Jawa Barat</p>
                     </div>
                 </div>
-                <div class="portfolio-card">
+                <div class="portfolio-card reveal">
                     <div class="portfolio-image">
                         <img src="{{ asset('images/portfolio_3.png') }}" alt="Aset Industri">
                         <div class="portfolio-category">Manajemen Aset</div>
@@ -290,15 +311,13 @@
     <!-- Partners Logo Strip -->
     <section class="partners">
         <div class="container">
-            <p class="partners-title">Dipercaya oleh institusi terkemuka</p>
+            <p class="partners-title">Our Partners</p>
             <div class="partners-track">
-                <!-- Set 1 -->
                 <div class="partner-logo">Bank Syariah A</div>
                 <div class="partner-logo">BPRS Sejahtera</div>
                 <div class="partner-logo">Koperasi Syariah</div>
                 <div class="partner-logo">Grup Properti X</div>
                 <div class="partner-logo">Investama Global</div>
-                <!-- Set 2 (Duplicated for seamless loop) -->
                 <div class="partner-logo">Bank Syariah A</div>
                 <div class="partner-logo">BPRS Sejahtera</div>
                 <div class="partner-logo">Koperasi Syariah</div>
@@ -309,15 +328,15 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta-section" id="kontak">
         <div class="cta-background"></div>
         <div class="container cta-container">
-            <h2>Siap Mengembangkan Aset Anda Bersama Kami?</h2>
-            <p>Jadwalkan sesi konsultasi gratis dengan tim ahli kami untuk mendiskusikan potensi dan peluang pertumbuhan
+            <h2 class="reveal">Siap Mengembangkan Aset Anda Bersama Kami?</h2>
+            <p class="reveal">Jadwalkan sesi konsultasi gratis dengan tim ahli kami untuk mendiskusikan potensi dan peluang pertumbuhan
                 aset Anda.</p>
-            <div class="cta-buttons">
-                <a href="#" class="btn btn-primary btn-large btn-white">Ajukan Kerjasama</a>
-                <a href="#" class="btn btn-outline btn-large btn-outline-white">Konsultasi Gratis</a>
+            <div class="cta-buttons reveal">
+                <a href="#" class="btn btn-white btn-large magnetic">Ajukan Kerjasama</a>
+                <a href="#" class="btn btn-outline-white btn-large magnetic">Konsultasi Gratis</a>
             </div>
         </div>
     </section>
@@ -388,40 +407,8 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Interactions -->
-    <script>
-        // Sticky Navbar
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Fade Up Animation Observer
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-up-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Apply fade-up to elements
-        document.querySelectorAll('.service-card, .portfolio-card, .step-item, .about-content, .about-image').forEach(el => {
-            el.classList.add('fade-up');
-            observer.observe(el);
-        });
-    </script>
+    <!-- Premium Interactions JS -->
+    <script src="{{ asset('js/premium.js') }}"></script>
 </body>
 
 </html>
